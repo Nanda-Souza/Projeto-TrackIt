@@ -1,18 +1,56 @@
 import styled from "styled-components";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
 
 export default function ScreenLogin(){
-    return (
-<InputLogin>
+    const [userEmail, setUserEmail] = useState("")
+    const [userPassword, setUSerPassword] = useState("")
+    const navigate = useNavigate()
 
-<InputLista>
+
+    
+function sendLogin(e){
+        e.preventDefault()
+
+        const loginData = {email: userEmail, password: userPassword}
+        console.log(loginData)
+        
+        const url_post = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login"
+        const promise = axios.post(url_post, loginData)
+
+        promise.then( res => {
+            console.log(res)
+            
+
+        })
+        promise.catch(err => console.log(err.response.data))
+
+        setUserEmail("")
+        setUSerPassword("")
+        
+ }
+    
+    return (
+<form onSubmit={sendLogin}>
+    <InputLogin>
+
+        <InputLista>
             <input
                 type="text-email"
+                value={userEmail} 
+                onChange={e => setUserEmail(e.target.value)}
                 placeholder="email"
+                required
                 />
 
             <input 
-                type="text-senha" 
-                placeholder="senha" 
+                type="text-password" 
+                value={userPassword} 
+                onChange={e => setUSerPassword(e.target.value)}
+                placeholder="password" 
+                required
                 />
 
 
@@ -21,12 +59,12 @@ export default function ScreenLogin(){
             </LogIn>
 
 
-</InputLista>
+        </InputLista>
 
-</InputLogin>
+    </InputLogin>
+</form>
     )
 }
-
 
 
 const InputLogin = styled.ul`
