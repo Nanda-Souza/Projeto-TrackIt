@@ -20,20 +20,21 @@ function sendLogin(e){
 
         const loginData = {email: userEmail, password: userPassword}
         setLoading(true)
-        console.log(loginData)
         
         const url_post = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login"
         const promise = axios.post(url_post, loginData)
 
         promise.then( res => {
             console.log(res)
-            setUserEmail("")
-            setUSerPassword("")
             setLoading(false)
             navigate("/hoje")
             
         })
-        promise.catch(err => console.log(err.response.data))
+        promise.catch( err => { 
+            //console.log(err.response.data)
+            alert(err.response.data.message)
+            setLoading(false)
+        })
 
         
         
