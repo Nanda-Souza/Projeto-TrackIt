@@ -4,32 +4,71 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ThreeDots } from  'react-loader-spinner'
 
-
-
 export default function ScreenRegister(){
+    const [loading, setLoading] = useState(false)
+    const [userEmail, setUserEmail] = useState("")
+    const [userPassword, setUserPassword] = useState("")
+    const [userName, setUserName] = useState("")
+    const [userImage, setUserImage] = useState("")
+    const navigate = useNavigate()
+
+function sendRegister(e){
+        e.preventDefault()
+
+        const loginData = {email: userEmail, password: userPassword, name: userName, image: userImage}
+        setLoading(true)
+        console.log(loginData)
+        
+        const url_post = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up"
+        const promise = axios.post(url_post, loginData)
+
+        promise.then( res => {
+            console.log(res)
+            setLoading(false)
+            navigate("/")
+            
+        })
+        promise.catch( err => { 
+            console.log(err.response.data)
+        })
+}
+
     
     return (
+<form onSubmit={sendRegister}>
     <InputRegister>
 
         <InputList>
             <input
                 type="email"
-                placeholder="email"             
+                value={userEmail} 
+                onChange={e => setUserEmail(e.target.value)}
+                placeholder="email"
+                required    
                 />
 
             <input 
                 type="password"
+                value={userPassword} 
+                onChange={e => setUserPassword(e.target.value)}
                 placeholder="senha" 
+                required  
                 />
 
             <input 
                 type="name"
-                placeholder="nome" 
+                value={userName} 
+                onChange={e => setUserName(e.target.value)}
+                placeholder="nome"
+                required   
                 />
 
             <input 
                 type="url"
+                value={userImage} 
+                onChange={e => setUserImage(e.target.value)}
                 placeholder="foto" 
+                required
                 />
 
             <Registration>
@@ -40,6 +79,7 @@ export default function ScreenRegister(){
         </InputList>
 
     </InputRegister>
+</form>
     )
 }
 
