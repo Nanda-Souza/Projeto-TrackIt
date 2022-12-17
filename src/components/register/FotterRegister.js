@@ -1,11 +1,15 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
+
 
 export default function FotterRegister(){
     
     return (
         <FotterReg>
 
+        <Link to="/" style={{ color: '#52B6FF'}}>
             <h1>Já tem uma conta? Faça login!</h1>
+        </Link>
 
         </FotterReg>
     )

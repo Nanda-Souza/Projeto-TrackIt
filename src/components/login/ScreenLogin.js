@@ -4,17 +4,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ThreeDots } from  'react-loader-spinner'
 
-
-
-
 export default function ScreenLogin(){
     const [loading, setLoading] = useState(false)
     const [userEmail, setUserEmail] = useState("")
     const [userPassword, setUSerPassword] = useState("")
     const navigate = useNavigate()
-
-
-    
+   
 function sendLogin(e){
         e.preventDefault()
 
@@ -35,9 +30,7 @@ function sendLogin(e){
             alert(err.response.data.message)
             setLoading(false)
         })
-
-        
-        
+      
  }
     
     return (
