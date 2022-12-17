@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ThreeDots } from  'react-loader-spinner'
 
@@ -44,7 +44,8 @@ function sendRegister(e){
                 value={userEmail} 
                 onChange={e => setUserEmail(e.target.value)}
                 placeholder="email"
-                required    
+                required
+                disabled={loading}         
                 />
 
             <input 
@@ -52,7 +53,8 @@ function sendRegister(e){
                 value={userPassword} 
                 onChange={e => setUserPassword(e.target.value)}
                 placeholder="senha" 
-                required  
+                required 
+                disabled={loading}     
                 />
 
             <input 
@@ -60,7 +62,8 @@ function sendRegister(e){
                 value={userName} 
                 onChange={e => setUserName(e.target.value)}
                 placeholder="nome"
-                required   
+                required
+                disabled={loading}        
                 />
 
             <input 
@@ -69,10 +72,19 @@ function sendRegister(e){
                 onChange={e => setUserImage(e.target.value)}
                 placeholder="foto" 
                 required
+                disabled={loading}     
                 />
 
-            <Registration>
+            <Registration isLoading={loading}>
+                {loading ? (
+                    <ThreeDots 
+                        height="40" 
+                        width="40" 
+                        color="#ffffff" 
+                        />
+                    ) : (
                     <p id="button" className="button-regis">Cadastrar</p>
+                    )}
             </Registration>
 
 
