@@ -29,7 +29,9 @@ function sendRegister(e){
             
         })
         promise.catch( err => { 
-            console.log(err.response.data)
+            //console.log(err.response.data)
+            alert(err.response.data.message)
+            setLoading(false)
         })
 }
 
