@@ -1,21 +1,20 @@
-
 import styled from 'styled-components';
 import Logo from '../components/shared/Logo';
-import ScreenLogin from '../components/login/ScreenLogin';
-import FotterLogin from '../components/login/FotterLogin';
+import ScreenRegister from '../components/register/ScreenRegister';
+import FotterRegister from '../components/register/FotterRegister';
 
 
-function LandingPage() {
+function HomePage() {
     return (
       <ScreenContainer>
             <Logo />
-            <ScreenLogin />
-            <FotterLogin />
+            <ScreenRegister />
+            <FotterRegister />
       </ScreenContainer>
     );
   }
   
-  export default LandingPage;
+  export default HomePage;
   
   const ScreenContainer = styled.div`
   background-color: #FFFFFF;

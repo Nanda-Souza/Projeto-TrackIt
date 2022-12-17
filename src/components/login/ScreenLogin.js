@@ -56,7 +56,7 @@ function sendLogin(e){
                 type="password" 
                 value={userPassword} 
                 onChange={e => setUSerPassword(e.target.value)}
-                placeholder="password" 
+                placeholder="senha" 
                 required
                 disabled={loading}
                 />

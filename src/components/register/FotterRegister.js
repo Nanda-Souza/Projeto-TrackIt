@@ -1,17 +1,17 @@
 import styled from "styled-components"
 
-export default function FotterLogin(){
+export default function FotterRegister(){
     
     return (
-        <FotterLog>
+        <FotterReg>
 
-            <h1>Não tem uma conta? Cadastre-se!</h1>
+            <h1>Já tem uma conta? Faça login!</h1>
 
-        </FotterLog>
+        </FotterReg>
     )
 }
 
-const FotterLog = styled.div`
+const FotterReg = styled.div`
     display: flex;
     align-items: center;
     margin: 20px 0 20px 0;
