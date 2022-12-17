@@ -2,9 +2,13 @@ import styled from "styled-components";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ThreeDots } from  'react-loader-spinner'
+
+
 
 
 export default function ScreenLogin(){
+    const [loading, setLoading] = useState(false)
     const [userEmail, setUserEmail] = useState("")
     const [userPassword, setUSerPassword] = useState("")
     const navigate = useNavigate()
@@ -15,6 +19,7 @@ function sendLogin(e){
         e.preventDefault()
 
         const loginData = {email: userEmail, password: userPassword}
+        setLoading(true)
         console.log(loginData)
         
         const url_post = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login"
@@ -22,13 +27,14 @@ function sendLogin(e){
 
         promise.then( res => {
             console.log(res)
+            setUserEmail("")
+            setUSerPassword("")
+            setLoading(false)
             
-
         })
         promise.catch(err => console.log(err.response.data))
 
-        setUserEmail("")
-        setUSerPassword("")
+        
         
  }
     
@@ -38,24 +44,35 @@ function sendLogin(e){
 
         <InputLista>
             <input
-                type="text-email"
+                type="email"
                 value={userEmail} 
                 onChange={e => setUserEmail(e.target.value)}
                 placeholder="email"
                 required
+                disabled={loading}                
                 />
 
             <input 
-                type="text-password" 
+                type="password" 
                 value={userPassword} 
                 onChange={e => setUSerPassword(e.target.value)}
                 placeholder="password" 
                 required
+                disabled={loading}
                 />
 
 
-            <LogIn>
-            <p id="button" className="button-log">Entrar</p>
+            <LogIn isLoading={loading}>
+                {loading ? (
+                    <ThreeDots 
+                        height="40" 
+                        width="40" 
+                        color="#ffffff" 
+                        />
+                    ) : (
+                    <p id="button" className="button-log">Entrar</p>
+                )}
+            
             </LogIn>
 
 
@@ -65,6 +82,7 @@ function sendLogin(e){
 </form>
     )
 }
+
 
 
 const InputLogin = styled.ul`
@@ -78,8 +96,8 @@ const InputLogin = styled.ul`
         font-family: 'Lexend Deca';
         font-style: normal;
         font-weight: 400;  
-        font-size: 18px;
-        color: #52B6FF;  
+        font-size: 20px;
+        color: #AFAFAF;  
         ::placeholder {
             font-family: 'Lexend Deca';
             font-style: normal;
@@ -100,7 +118,7 @@ align-items: center;
 
 `
 
-const LogIn = styled.button` {
+const LogIn = styled.button` 
         width: 310px;
         height: 45px;
         background-color: #52B6FF;
@@ -112,5 +130,9 @@ const LogIn = styled.button` {
         font-weight: 400;
         font-size: 20px;
         color: #FFFFFF;
-        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+             
         `
+        
