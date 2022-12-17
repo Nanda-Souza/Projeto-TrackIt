@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ThreeDots } from  'react-loader-spinner'
 
@@ -30,6 +30,7 @@ function sendLogin(e){
             setUserEmail("")
             setUSerPassword("")
             setLoading(false)
+            navigate("/hoje")
             
         })
         promise.catch(err => console.log(err.response.data))
