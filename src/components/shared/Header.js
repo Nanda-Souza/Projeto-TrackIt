@@ -4,22 +4,36 @@ export default function Header(){
     return (
         <HeaderGeneral>
             <p class= "textHeader">TrackIt</p>
+            <img src={"https://w7.pngwing.com/pngs/896/922/png-transparent-computer-icons-user-profile-profile-miscellaneous-angle-white-thumbnail.png"} />
         </HeaderGeneral>
     )
 }
 
 const HeaderGeneral = styled.div`
     width: 100%;
-    min-height: 70px;
+    height: 70px;
     background-color: #126BA5;
     position: fixed;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
     font-family: 'Playball';
     font-weight: 400;
     font-size: 40px;
     color: #FFFFFF;
     padding: 10px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    p{
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        margin-left: 20px;
+    }
+    img {
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        margin-right: 16px;
+        margin-top: 7px;
+    }
   `

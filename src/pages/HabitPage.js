@@ -2,16 +2,17 @@ import styled from 'styled-components';
 import Footer from '../components/shared/Footer';
 import Header from '../components/shared/Header';
 
-function HomePage() {
-    return (
+function HabitPage(){
+    return(
       <ScreenContainer>
             <Header />
+            <h3>Habits</h3>
             <Footer />
       </ScreenContainer>
     );
   }
   
-  export default HomePage;
+  export default HabitPage;
   
   const ScreenContainer = styled.div`
   background-color: #f5f2f4;
