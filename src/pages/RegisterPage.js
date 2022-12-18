@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Logo from '../components/shared/Logo';
 import ScreenRegister from '../components/register/ScreenRegister';
-import FotterRegister from '../components/register/FotterRegister';
+import FooterRegister from '../components/register/FooterRegister';
 
 
 function HomePage() {
@@ -9,7 +9,7 @@ function HomePage() {
       <ScreenContainer>
             <Logo />
             <ScreenRegister />
-            <FotterRegister />
+            <FooterRegister />
       </ScreenContainer>
     );
   }

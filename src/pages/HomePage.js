@@ -1,10 +1,12 @@
 import styled from 'styled-components';
-
+import Footer from '../components/shared/Footer';
+import Header from '../components/shared/Header';
 
 function HomePage() {
     return (
       <ScreenContainer>
-            <h1>Bem Vindo ao TrackIt</h1>
+            <Header />
+            <Footer />
       </ScreenContainer>
     );
   }
@@ -12,7 +14,7 @@ function HomePage() {
   export default HomePage;
   
   const ScreenContainer = styled.div`
-  background-color: #FFFFFF;
+  background-color: #E5E5E5;
   width: 100vw;
   min-height: 100vh;
   display: flex;

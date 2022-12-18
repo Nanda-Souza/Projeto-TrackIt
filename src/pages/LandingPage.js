@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import Logo from '../components/shared/Logo';
 import ScreenLogin from '../components/login/ScreenLogin';
-import FotterLogin from '../components/login/FotterLogin';
+import FooterLogin from '../components/login/FooterLogin';
 
 
 function LandingPage() {
@@ -10,7 +10,7 @@ function LandingPage() {
       <ScreenContainer>
             <Logo />
             <ScreenLogin />
-            <FotterLogin />
+            <FooterLogin />
       </ScreenContainer>
     );
   }

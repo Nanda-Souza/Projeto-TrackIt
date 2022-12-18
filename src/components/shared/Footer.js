@@ -1,25 +1,25 @@
 import styled from "styled-components"
 
-export default function Header(){
+export default function Fotter(){
     return (
-        <HeaderGeneral>
-            <p class= "textHeader">TrackIt</p>
-        </HeaderGeneral>
+        <FooterGeneral>
+        </FooterGeneral>
     )
 }
 
-const HeaderGeneral = styled.div`
+const FooterGeneral = styled.div`
     width: 100%;
     min-height: 70px;
-    background-color: #126BA5;
+    background-color: #FFFFFF;
     position: fixed;
+    bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: 'Playball';
+    font-family: 'Recursive';
     font-weight: 400;
-    font-size: 40px;
-    color: #FFFFFF;
+    font-size: 18px;
+    color: #333333;
     padding: 10px;
   `
