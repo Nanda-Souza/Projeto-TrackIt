@@ -2,10 +2,23 @@ import styled from "styled-components"
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Link } from "react-router-dom"
+import { useContext} from "react";
+import LogInContext from "../../contexts/LogInContext";
 
 //const value = 0.66;
 
 export default function Fotter(){
+    const { userHabbits } = useContext(LogInContext)
+    let percentage = 0
+
+    if(userHabbits === undefined || userHabbits.length === 0){
+        percentage = 0
+    } else{
+        const completed = userHabbits.filter((habit) => habit.done)
+        percentage = (completed.length / userHabbits.length) *100
+       }
+
+
     return (
         
         <FooterGeneral>
@@ -16,7 +29,7 @@ export default function Fotter(){
        
             <Link to="/hoje" style={{ textDecoration: "none"}} >
                 <CircularProgressbar 
-                //value={value} 
+                value={percentage} 
                 //maxValue={1} 
                 //text={`${value * 100}%`}
                 text={"Hoje"}

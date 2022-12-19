@@ -1,11 +1,11 @@
 import styled from "styled-components"
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect} from "react";
 import LogInContext from "../../contexts/LogInContext";
 
 export default function TodayHabits(){
-    const { config } = useContext(LogInContext)
-    const [userHabbits, setUserHabbits] = useState(undefined) 
+    const { config, userHabbits, setUserHabbits } = useContext(LogInContext)
+    
 
     useEffect(() => {
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today";
