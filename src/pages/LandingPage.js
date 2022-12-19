@@ -5,13 +5,18 @@ import ScreenLogin from '../components/login/ScreenLogin';
 import FooterLogin from '../components/login/FooterLogin';
 
 
+
 function LandingPage() {
+    
+
     return (
-      <ScreenContainer>
+      
+        <ScreenContainer>
             <Logo />
             <ScreenLogin />
             <FooterLogin />
-      </ScreenContainer>
+        </ScreenContainer>
+      
     );
   }
   

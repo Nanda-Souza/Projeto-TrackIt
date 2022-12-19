@@ -1,14 +1,19 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ThreeDots } from  'react-loader-spinner'
+import LogInContext from "../../contexts/LogInContext";
+
 
 export default function ScreenLogin(){
     const [loading, setLoading] = useState(false)
     const [userEmail, setUserEmail] = useState("")
     const [userPassword, setUSerPassword] = useState("")
     const navigate = useNavigate()
+    const { setLoginInfo } = useContext(LogInContext)
+   
+    
    
 function sendLogin(e){
         e.preventDefault()
@@ -23,6 +28,8 @@ function sendLogin(e){
             console.log(res)
             setLoading(false)
             navigate("/hoje")
+            setLoginInfo(res.data)
+            console.log(res.data)
             
         })
         promise.catch( err => { 

@@ -1,10 +1,18 @@
 import styled from "styled-components"
+import { useContext } from "react"
+import LogInContext from "../../contexts/LogInContext"
+
 
 export default function Header(){
+    const { loginInfo } = useContext(LogInContext)
+       
+   
+    
     return (
         <HeaderGeneral>
-            <p class= "textHeader">TrackIt</p>
-            <img src={"https://w7.pngwing.com/pngs/896/922/png-transparent-computer-icons-user-profile-profile-miscellaneous-angle-white-thumbnail.png"} />
+            <p className= "textHeader">TrackIt</p>
+            <img src={loginInfo.image} />
+
         </HeaderGeneral>
     )
 }
