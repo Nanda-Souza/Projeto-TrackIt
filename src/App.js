@@ -14,10 +14,15 @@ import { useState } from "react";
 
 export default function App() { 
   const [loginInfo, setLoginInfo] = useState({})
+  const config = {
+    headers: {
+        Authorization: `Bearer ${loginInfo.token}`,
+      },
+    };
   
 
   return (
-    <LogInContext.Provider value={{loginInfo, setLoginInfo}}>
+    <LogInContext.Provider value={{loginInfo, setLoginInfo, config}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
