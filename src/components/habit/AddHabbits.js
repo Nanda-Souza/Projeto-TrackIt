@@ -1,7 +1,22 @@
+import { useState } from "react"
 import styled from "styled-components"
 
 export default function AddHabbits(){
+    const [day, setDay] = useState("day")
+    const dayList = ["D", "S", "T", "Q", "Q", "S", "S"]
+    const [selectDays, setselectDays] = useState([]);
     
+    
+    function selectDay(day){
+        if (selectDays.includes(day)) {
+            setselectDays(current => current.filter((dayList) => dayList !== day )   
+        )} else  
+            setselectDays([...selectDays, day])
+    }
+            
+
+    
+
     return (
         <HabitAdd>
             <div className="habit-add">
@@ -16,14 +31,14 @@ export default function AddHabbits(){
            
         
              <ul>
-                <li className="day">D</li>
-                <li className="day">S</li>
-                <li className="day">T</li>
-                <li className="day">Q</li>
-                <li className="day">Q</li>
-                <li className="day">S</li>
-                <li className="day">S</li>
-                <li className="day">D</li>
+             {dayList?.map((l, index) => (
+                <li 
+                    key={index} 
+                    className={`${selectDays.includes(index) ? "day-check" : "day"}`}
+                    onClick={() => selectDay(index)}>{l}
+                </li>
+
+             ))}               
               </ul>
 
             </div>
@@ -67,6 +82,12 @@ const HabitAdd = styled.div`
         border-radius: 5px;
         margin-right: 4px;  
     }
+    .day-check{
+        color:#FFFFFF;
+        background-color: #dbdbdb;
+    }
+    .day{
+        color:#dbdbdb;
 `
 const InputHabit = styled.div`
 input {
