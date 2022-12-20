@@ -1,11 +1,15 @@
 import styled from "styled-components"
 import TodayHabbits from "./TodayHabbits";
+import 'dayjs/locale/pt-br';
 
 export default function ScreenHome(){
+    require('dayjs/locale/pt-br');
+    const dayjs = require('dayjs');
+    const todaysDate = dayjs().locale("pt-br").format("dddd DD/MM");
     
     return (
         <HomeContainer>
-          <h2>Segunda, 17/05</h2> 
+          <h2>{todaysDate}</h2> 
           <p className="">Nenhum hábito concluído ainda</p> 
           <TodayHabbits />
 
