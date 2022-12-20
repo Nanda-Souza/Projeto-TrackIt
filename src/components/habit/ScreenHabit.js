@@ -23,7 +23,7 @@ export default function ScreenHabit(){
           </div>
           
           { addHab && (
-            <AddHabbits />)
+            <AddHabbits setAddHab={setAddHab}/>)
           }
           
           <MyHabbits />

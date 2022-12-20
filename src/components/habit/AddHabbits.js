@@ -1,10 +1,14 @@
 import { useState } from "react"
 import styled from "styled-components"
+import axios from "axios";
+import { useContext } from "react";
+import LogInContext from "../../contexts/LogInContext";
 
-export default function AddHabbits(){
-    const [day, setDay] = useState("day")
+export default function AddHabbits({ setAddHab }){
+    const { config } = useContext(LogInContext)
     const dayList = ["D", "S", "T", "Q", "Q", "S", "S"]
     const [selectDays, setselectDays] = useState([]);
+    const [habitName, setHabitName] = useState("")
     
     
     function selectDay(day){
@@ -13,18 +17,35 @@ export default function AddHabbits(){
         )} else  
             setselectDays([...selectDays, day])
     }
-            
+    function disableHabit(){
+        setAddHab(false);
+    }            
 
-    
+    function createHabit(e){
+        e.preventDefault()
+        const habitData = {name: habitName, days: selectDays }
+        console.log(habitData)
+
+        const url_post = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits"
+        const promise = axios.post(url_post, habitData, config)
+
+        promise.then( res => {
+            console.log(res)
+            setAddHab(false);
+        })        
+    }
 
     return (
+        <form onSubmit={createHabit}>
         <HabitAdd>
             <div className="habit-add">
 
             <InputHabit>
                 <input 
                 type="habit-name" 
-                placeholder="nome do hábito" 
+                placeholder="nome do hábito"
+                value={habitName}
+                onChange={e => setHabitName(e.target.value)}
                 required
                 />
             </InputHabit>
@@ -45,12 +66,13 @@ export default function AddHabbits(){
 
             <ButtonList>
 
-                <button className="cancel">Cancelar</button>
+                <button className="cancel" onClick={disableHabit}>Cancelar</button>
                 <button className="save">Salvar</button>
 
             </ButtonList>
 
         </HabitAdd>
+    </form>
     )
 }
 
