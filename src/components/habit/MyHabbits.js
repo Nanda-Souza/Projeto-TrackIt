@@ -5,17 +5,19 @@ import { useContext, useEffect, useState} from "react";
 import LogInContext from "../../contexts/LogInContext";
 
 export default function MyHabbits(){
-    const { config, userHabbits } = useContext(LogInContext)
+    const { config, userHabbits} = useContext(LogInContext)
     const [ habbits, setHabbits ] = useState(undefined)
+    
 
     useEffect(() => {
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
+        
         const promise = axios.get(URL, config);
         
         promise.then( res => 
             setHabbits(res.data)
             
-        )}, []);
+        )}, [deleteHabit]);
         
         if (userHabbits === undefined) {
             return(
@@ -24,6 +26,26 @@ export default function MyHabbits(){
                 </>
             )
           }
+        
+        function deleteHabit(id) {
+            
+            const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/" + id 
+            const delHabit = window.confirm(
+                "Deseja deletar este hábito?"
+            )
+
+            if (delHabit) {
+                const promise = axios.delete(URL, config);
+                promise.then( res => {
+                    console.log(URL)
+                                        
+                })
+                
+            }
+
+
+            
+        }
     
     return (
         <>
@@ -43,7 +65,7 @@ export default function MyHabbits(){
              </ul>
              </div>
 
-             <div className="delete">
+             <div className="delete" onClick={() => deleteHabit(habbits.id)}>
                <img src="assets/delete.png"/>
              </div>   
 

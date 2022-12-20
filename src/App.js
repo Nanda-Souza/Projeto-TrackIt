@@ -14,7 +14,8 @@ import { useState } from "react";
 
 export default function App() { 
   const [loginInfo, setLoginInfo] = useState({})
-  const [userHabbits, setUserHabbits] = useState(undefined) 
+  const [userHabbits, setUserHabbits] = useState(undefined)
+  const [counter, setCounter] = useState(0) 
   const config = {
     headers: {
         Authorization: `Bearer ${loginInfo.token}`,
@@ -23,7 +24,7 @@ export default function App() {
   
 
   return (
-    <LogInContext.Provider value={{loginInfo, setLoginInfo, config, userHabbits, setUserHabbits}}>
+    <LogInContext.Provider value={{loginInfo, setLoginInfo, config, userHabbits, setUserHabbits, counter, setCounter}}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
