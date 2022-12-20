@@ -9,14 +9,16 @@ export default function AddHabbits({ setAddHab }){
     const dayList = ["D", "S", "T", "Q", "Q", "S", "S"]
     const [selectDays, setselectDays] = useState([]);
     const [habitName, setHabitName] = useState("")
+    const [loading, setLoading] = useState(false)
     
     
     function selectDay(day){
-        if (selectDays.includes(day)) {
+        if (selectDays.includes(day) && !loading) {
             setselectDays(current => current.filter((dayList) => dayList !== day )   
-        )} else  
+        )} else if (!loading){
             setselectDays([...selectDays, day])
-    }
+        } 
+                }
     function disableHabit(){
         setAddHab(false);
     }            
@@ -25,13 +27,15 @@ export default function AddHabbits({ setAddHab }){
         e.preventDefault()
         const habitData = {name: habitName, days: selectDays }
         console.log(habitData)
+        setLoading(true)
 
         const url_post = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits"
         const promise = axios.post(url_post, habitData, config)
 
         promise.then( res => {
             console.log(res)
-            setAddHab(false);
+            setLoading(false)
+            //setAddHab(false);
         })        
     }
 
@@ -47,6 +51,7 @@ export default function AddHabbits({ setAddHab }){
                 value={habitName}
                 onChange={e => setHabitName(e.target.value)}
                 required
+                disabled={loading} 
                 />
             </InputHabit>
            
@@ -102,7 +107,8 @@ const HabitAdd = styled.div`
         height: 30px;
         border: 1px solid #D4D4D4;
         border-radius: 5px;
-        margin-right: 4px;  
+        margin-right: 4px;
+          
     }
     .day-check{
         color:#FFFFFF;
