@@ -75,11 +75,13 @@ export default function MyHabbits(){
         
         <AddHabbits />
 
+    {(habbits === undefined || Object.keys(habbits).length === 0)  && (
         <HabitStart>
 
             <p className="select-habit">Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
 
-        </HabitStart>       
+        </HabitStart>)
+        }       
 
         </>
     )
