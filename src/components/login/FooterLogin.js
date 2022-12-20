@@ -6,8 +6,8 @@ export default function FooterLogin(){
     return (
         <FooterLog>
    
-        <Link to="/cadastro" style={{ color: '#52B6FF'}}>
-            <h1>Não tem uma conta? Cadastre-se!</h1>
+        <Link data-test="signup-link" to="/cadastro" style={{ color: '#52B6FF'}}>
+            <h1 >Não tem uma conta? Cadastre-se!</h1>
         </Link>
 
         </FooterLog>

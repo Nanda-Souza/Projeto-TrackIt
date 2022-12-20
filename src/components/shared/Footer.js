@@ -8,7 +8,7 @@ import LogInContext from "../../contexts/LogInContext";
 //const value = 0.66;
 
 export default function Fotter(){
-    const { userHabbits } = useContext(LogInContext)
+    const { userHabbits, setPercentage } = useContext(LogInContext)
     let percentage = 0
 
     if(userHabbits === undefined || userHabbits.length === 0){
@@ -16,18 +16,19 @@ export default function Fotter(){
     } else{
         const completed = userHabbits.filter((habit) => habit.done)
         percentage = (completed.length / userHabbits.length) *100
+        
        }
 
 
     return (
         
-        <FooterGeneral>
+        <FooterGeneral data-test="menu">
 
-            <Link to="/habitos" style={{ textDecoration: "none", color: '#52B6FF'}}>
+            <Link data-test="habit-link" to="/habitos" style={{ textDecoration: "none", color: '#52B6FF'}}>
                 <p>Hábitos</p>
             </Link>
        
-            <Link to="/hoje" style={{ textDecoration: "none"}} >
+            <Link data-test="today-link" to="/hoje" style={{ textDecoration: "none"}} >
                 <CircularProgressbar 
                 value={percentage} 
                 //maxValue={1} 
@@ -44,7 +45,7 @@ export default function Fotter(){
             />
             </Link>
 
-            <Link to="/historico" style={{ textDecoration: "none", color: '#52B6FF'}}>
+            <Link data-test="history-link" to="/historico" style={{ textDecoration: "none", color: '#52B6FF'}}>
                 <p>Histórico</p>
             </Link>
        

@@ -27,12 +27,12 @@ export default function TodayHabbits(){
     return (
         <>
         {userHabbits?.map((userHabbits) => (
-            <TodayContainer key={userHabbits.id} >
+            <TodayContainer data-test="today-habit-container" key={userHabbits.id} >
                 <div>
-                    <p className="read">{userHabbits.name}</p>
-                    <p className="sequence">Sequência atual: 3 dias Seu recorde: 5 dias</p>
+                    <p data-test="today-habit-name" className="read">{userHabbits.name}</p>
+                    <p data-test="today-habit-sequence" className="sequence">Sequência atual: 3 dias Seu recorde: 5 dias</p>
                 </div>
-                <div className={`${userHabbits.done ? "check-green" : "check-gray"}`}>
+                <div data-test="today-habit-check-btn" className={`${userHabbits.done ? "check-green" : "check-gray"}`}>
                     <img src="assets/check.png" />
                 </div>                
             </TodayContainer>

@@ -7,7 +7,7 @@ export default function FooterRegister(){
     return (
         <FooterReg>
 
-        <Link to="/" style={{ color: '#52B6FF'}}>
+        <Link data-test="login-link" to="/" style={{ color: '#52B6FF'}}>
             <h1>Já tem uma conta? Faça login!</h1>
         </Link>
 

@@ -46,6 +46,7 @@ function sendLogin(e){
 
         <InputLista>
             <input
+                data-test="email-input" 
                 type="email"
                 value={userEmail} 
                 onChange={e => setUserEmail(e.target.value)}
@@ -54,7 +55,8 @@ function sendLogin(e){
                 disabled={loading}                
                 />
 
-            <input 
+            <input
+                data-test="password-input" 
                 type="password" 
                 value={userPassword} 
                 onChange={e => setUSerPassword(e.target.value)}
@@ -72,7 +74,10 @@ function sendLogin(e){
                         color="#ffffff" 
                         />
                     ) : (
-                    <p id="button" className="button-log">Entrar</p>
+                    <p 
+                        data-test="login-btn" 
+                        id="button" 
+                        className="button-log">Entrar</p>
                 )}
             
             </LogIn>

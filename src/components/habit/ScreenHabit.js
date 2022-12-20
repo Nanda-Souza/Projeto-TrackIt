@@ -17,7 +17,7 @@ export default function ScreenHabit(){
             <div>
               <h2>Meus hábitos</h2>
             </div> 
-            <div className="add" onClick={enableHabit}>
+            <div data-test="habit-create-btn" className="add" onClick={enableHabit}>
               <img src="assets/more.png" />
             </div> 
           </div>

@@ -42,6 +42,7 @@ function sendRegister(e){
 
         <InputList>
             <input
+                data-test="email-input"
                 type="email"
                 value={userEmail} 
                 onChange={e => setUserEmail(e.target.value)}
@@ -50,7 +51,8 @@ function sendRegister(e){
                 disabled={loading}         
                 />
 
-            <input 
+            <input
+                data-test="password-input"
                 type="password"
                 value={userPassword} 
                 onChange={e => setUserPassword(e.target.value)}
@@ -59,7 +61,8 @@ function sendRegister(e){
                 disabled={loading}     
                 />
 
-            <input 
+            <input
+                data-test="user-name-input" 
                 type="name"
                 value={userName} 
                 onChange={e => setUserName(e.target.value)}
@@ -68,7 +71,8 @@ function sendRegister(e){
                 disabled={loading}        
                 />
 
-            <input 
+            <input
+                data-test="user-image-input" 
                 type="url"
                 value={userImage} 
                 onChange={e => setUserImage(e.target.value)}
@@ -85,7 +89,9 @@ function sendRegister(e){
                         color="#ffffff" 
                         />
                     ) : (
-                    <p id="button" className="button-regis">Cadastrar</p>
+                    <p 
+                        data-test="signup-btn"
+                        id="button" className="button-regis">Cadastrar</p>
                     )}
             </Registration>
 

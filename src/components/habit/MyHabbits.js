@@ -49,22 +49,22 @@ export default function MyHabbits(){
     return (
         <>
         {habbits?.map((habbits) => (
-            <HabitList key={habbits.id}>
+            <HabitList data-test="habit-container" key={habbits.id}>
             <div className="habit-select">
-            <p className="select-habit">{habbits.name}</p>
+            <p data-test="habit-name" className="select-habit">{habbits.name}</p>
  
              <ul>
-               <li className={`${habbits.days.includes(0) ? "day-check" : "day"}`}>D</li>
-               <li className={`${habbits.days.includes(1) ? "day-check" : "day"}`}>S</li>
-               <li className={`${habbits.days.includes(2) ? "day-check" : "day"}`}>T</li>
-               <li className={`${habbits.days.includes(3) ? "day-check" : "day"}`}>Q</li>
-               <li className={`${habbits.days.includes(4) ? "day-check" : "day"}`}>Q</li>
-               <li className={`${habbits.days.includes(5) ? "day-check" : "day"}`}>S</li>
-               <li className={`${habbits.days.includes(6) ? "day-check" : "day"}`}>S</li>               
+               <li data-test="habit-day" className={`${habbits.days.includes(0) ? "day-check" : "day"}`}>D</li>
+               <li data-test="habit-day" className={`${habbits.days.includes(1) ? "day-check" : "day"}`}>S</li>
+               <li data-test="habit-day" className={`${habbits.days.includes(2) ? "day-check" : "day"}`}>T</li>
+               <li data-test="habit-day" className={`${habbits.days.includes(3) ? "day-check" : "day"}`}>Q</li>
+               <li data-test="habit-day" className={`${habbits.days.includes(4) ? "day-check" : "day"}`}>Q</li>
+               <li data-test="habit-day" className={`${habbits.days.includes(5) ? "day-check" : "day"}`}>S</li>
+               <li data-test="habit-day" className={`${habbits.days.includes(6) ? "day-check" : "day"}`}>S</li>               
              </ul>
              </div>
 
-             <div className="delete" onClick={() => deleteHabit(habbits.id)}>
+             <div data-test="habit-delete-btn" className="delete" onClick={() => deleteHabit(habbits.id)}>
                <img src="assets/delete.png"/>
              </div>   
 

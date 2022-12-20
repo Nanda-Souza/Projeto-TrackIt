@@ -46,11 +46,12 @@ export default function AddHabbits({ setAddHab }){
 
     return (
         <form onSubmit={createHabit}>
-        <HabitAdd>
+        <HabitAdd data-test="habit-create-container">
             <div className="habit-add">
 
             <InputHabit>
-                <input 
+                <input
+                data-test="habit-name-input" 
                 type="habit-name" 
                 placeholder="nome do hábito"
                 value={habitName}
@@ -64,6 +65,7 @@ export default function AddHabbits({ setAddHab }){
              <ul>
              {dayList?.map((l, index) => (
                 <li 
+                    data-test="habit-day"
                     key={index} 
                     className={`${selectDays.includes(index) ? "day-check" : "day"}`}
                     onClick={() => selectDay(index)}>{l}
@@ -76,8 +78,8 @@ export default function AddHabbits({ setAddHab }){
 
             <ButtonList>
 
-                <button className="cancel" onClick={disableHabit}>Cancelar</button>
-                <button className="save">Salvar</button>
+                <button data-test="habit-create-cancel-btn" className="cancel" onClick={disableHabit}>Cancelar</button>
+                <button data-test="habit-create-save-btn" className="save">Salvar</button>
 
             </ButtonList>
 

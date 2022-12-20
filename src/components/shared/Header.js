@@ -9,7 +9,7 @@ export default function Header(){
    
     
     return (
-        <HeaderGeneral>
+        <HeaderGeneral data-test="header">
             <p className= "textHeader">TrackIt</p>
             <img src={loginInfo.image} />
 

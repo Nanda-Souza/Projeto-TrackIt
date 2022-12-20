@@ -1,16 +1,19 @@
 import styled from "styled-components"
 import TodayHabbits from "./TodayHabbits";
 import 'dayjs/locale/pt-br';
+import LogInContext from "../../contexts/LogInContext";
+import { useContext } from "react";
 
 export default function ScreenHome(){
     require('dayjs/locale/pt-br');
     const dayjs = require('dayjs');
     const todaysDate = dayjs().locale("pt-br").format("dddd DD/MM");
+    const { percentage} = useContext(LogInContext)
     
     return (
         <HomeContainer>
-          <h2>{todaysDate}</h2> 
-          <p className="">Nenhum hábito concluído ainda</p> 
+          <h2 data-test="today">{todaysDate}</h2> 
+          <p data-test="today-counter" className="">Nenhum hábito concluído ainda</p> 
           <TodayHabbits />
 
         </HomeContainer>
