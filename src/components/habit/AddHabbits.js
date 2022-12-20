@@ -35,7 +35,12 @@ export default function AddHabbits({ setAddHab }){
         promise.then( res => {
             console.log(res)
             setLoading(false)
-            //setAddHab(false);
+            setAddHab(false);
+        })
+        promise.catch( err => { 
+            //console.log(err.response.data)
+            alert(err.response.data.message)
+            setLoading(false)
         })        
     }
 
