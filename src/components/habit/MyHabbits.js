@@ -1,71 +1,63 @@
 import styled from "styled-components"
+import AddHabbits from "./AddHabbits"
+import axios from "axios";
+import { useContext, useEffect, useState} from "react";
+import LogInContext from "../../contexts/LogInContext";
 
 export default function MyHabbits(){
+    const { config, userHabbits } = useContext(LogInContext)
+    const [ habbits, setHabbits ] = useState(undefined)
+
+    useEffect(() => {
+        const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
+        const promise = axios.get(URL, config);
+        
+        promise.then( res => 
+            setHabbits(res.data)
+            
+        )}, []);
+        
+        if (userHabbits === undefined) {
+            return(
+                <>
+                    <p>Carregando...</p>
+                </>
+            )
+          }
     
     return (
         <>
-
-        <HabitList>
-             <div class="habit-select">
-             <p className="select-habit">Ler 1 capítulo de livro</p>
-  
-              <ul>
-                <li className="day-check">D</li>
-                <li className="day">S</li>
-                <li className="day-check">T</li>
-                <li className="day">Q</li>
-                <li className="day-check">Q</li>
-                <li className="day">S</li>
-                <li className="day-check">S</li>
-                <li className="day">D</li>
-              </ul>
-              </div>
-
-              <div className="delete">
-                <img src="assets/delete.png"/>
-              </div>   
-
-        </HabitList>
-
-        <HabitAdd>
-            <div class="habit-add">
-
-            <InputHabit>
-                <input 
-                type="habit-name" 
-                placeholder="nome do hábito" 
-                required
-                />
-            </InputHabit>
-           
-        
+        {habbits?.map((habbits) => (
+            <HabitList key={habbits.id}>
+            <div className="habit-select">
+            <p className="select-habit">{habbits.name}</p>
+ 
              <ul>
-                <li className="day">D</li>
-                <li className="day">S</li>
-                <li className="day">T</li>
-                <li className="day">Q</li>
-                <li className="day">Q</li>
-                <li className="day">S</li>
-                <li className="day">S</li>
-                <li className="day">D</li>
-              </ul>
+               <li className={`${habbits.days.includes(0) ? "day-check" : "day"}`}>D</li>
+               <li className={`${habbits.days.includes(1) ? "day-check" : "day"}`}>S</li>
+               <li className={`${habbits.days.includes(2) ? "day-check" : "day"}`}>T</li>
+               <li className={`${habbits.days.includes(3) ? "day-check" : "day"}`}>Q</li>
+               <li className={`${habbits.days.includes(4) ? "day-check" : "day"}`}>Q</li>
+               <li className={`${habbits.days.includes(5) ? "day-check" : "day"}`}>S</li>
+               <li className={`${habbits.days.includes(6) ? "day-check" : "day"}`}>S</li>               
+             </ul>
+             </div>
 
-            </div>
+             <div className="delete">
+               <img src="assets/delete.png"/>
+             </div>   
 
-            <ButtonList>
-
-                <button className="cancel">Cancelar</button>
-                <button className="save">Salvar</button>
-
-            </ButtonList>
-
-        </HabitAdd>
+       </HabitList>
+            
+        ))}
+        
+        <AddHabbits />
 
         <HabitStart>
 
-        <p className="select-habit">Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
+            <p className="select-habit">Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
 
-        </HabitStart>
+        </HabitStart>       
 
         </>
     )
@@ -116,58 +108,7 @@ const HabitList = styled.div`
     }
      `
      
-const HabitAdd = styled.div`
-    display: flex;
-    flex-wrap:wrap;
-    width: 100%;
-    height: 180px;
-    border-radius:5px;
-    margin-bottom:10px;
-    background-color:#FFFFFF;
-    color:#DBDBDB;
-    .habit-add{
-    width: 100%;
-    margin-right:35px;
-    }
-    ul{
-        display: flex;
-        margin-left:15px;
-    }
-    li{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 30px;
-        height: 30px;
-        border: 1px solid #D4D4D4;
-        border-radius: 5px;
-        margin-right: 4px;  
-    }
-`
-const InputHabit = styled.div`
-input {
-    display: flex;
-    width: 100%;
-    height: 45px;
-    border: 1px solid #DBDBDB;
-    border-radius: 5px;  
-    margin: 15px;
-    outline: none;
-    font-family: 'Lexend Deca';
-    font-style: normal;
-    font-weight: 400;  
-    font-size: 20px;
-    color: #AFAFAF;  
-    ::placeholder {
-        font-family: 'Lexend Deca';
-        font-style: normal;
-        font-weight: 400;
-        padding-left:15px;
-        margin-left: 12px;
-        color: #DBDBDB;
-        font-size: 20px;
-    }        
-`
+
 
 const HabitStart = styled.div`
 display: flex;
@@ -181,33 +122,5 @@ margin-bottom:10px;
     color:#666666;
     font-size:19px;
     margin:15px;
-}
-`
-
-const ButtonList = styled.div`
-display: flex;
-margin-left:auto;
-.save{
-   width: 84px;
-   height: 35px;
-   margin-bottom: 10px;
-   margin-left:23px;
-   margin-right: 16px;
-   background-color: #52B6FF;
-   border:none;
-   border-radius:5px;
-   font-style: normal;
-   font-weight: 400;
-   font-size: 15px;
-   color: #FFFFFF;
-}
-.cancel{
-    height: 35px;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    color: #52B6FF;
-    border:none;
-    background-color: #ffffff;
 }
 `

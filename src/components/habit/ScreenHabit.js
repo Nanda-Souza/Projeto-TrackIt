@@ -23,7 +23,6 @@ export default function ScreenHabit(){
 
 const HabitContainer = styled.div`
     display: flex;
-
     flex-direction: column;
     margin-top:108px;
     margin-left:30px;
