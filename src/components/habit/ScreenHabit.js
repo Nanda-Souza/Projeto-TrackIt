@@ -1,7 +1,14 @@
 import styled from "styled-components"
 import MyHabbits from "./MyHabbits"
+import AddHabbits from "./AddHabbits"
+import { useState } from "react"
 
 export default function ScreenHabit(){
+  const [addHab, setAddHab] = useState(false)
+
+  function enableHabit() {
+    setAddHab(true)
+  }
     
     return (
         <HabitContainer>
@@ -10,11 +17,15 @@ export default function ScreenHabit(){
             <div>
               <h2>Meus hábitos</h2>
             </div> 
-            <div className="add">
+            <div className="add" onClick={enableHabit}>
               <img src="assets/more.png" />
             </div> 
-          </div>  
-
+          </div>
+          
+          { addHab && (
+            <AddHabbits />)
+          }
+          
           <MyHabbits />
 
         </HabitContainer>

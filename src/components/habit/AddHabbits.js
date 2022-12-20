@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export default function DaysHabbits(){
+export default function AddHabbits(){
     
     return (
         <HabitAdd>

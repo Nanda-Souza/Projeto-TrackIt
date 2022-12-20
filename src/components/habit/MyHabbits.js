@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import AddHabbits from "./AddHabbits"
 import axios from "axios";
 import { useContext, useEffect, useState} from "react";
 import LogInContext from "../../contexts/LogInContext";
@@ -72,8 +71,6 @@ export default function MyHabbits(){
        </HabitList>
             
         ))}
-        
-        <AddHabbits />
 
     {(habbits === undefined || Object.keys(habbits).length === 0)  && (
         <HabitStart>
