@@ -3,7 +3,7 @@ import axios from "axios";
 import { useContext, useEffect} from "react";
 import LogInContext from "../../contexts/LogInContext";
 
-export default function TodayHabits(){
+export default function TodayHabbits(){
     const { config, userHabbits, setUserHabbits } = useContext(LogInContext)
     
 

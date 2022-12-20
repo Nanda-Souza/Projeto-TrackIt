@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ScreenHabit from '../components/habit/ScreenHabit';
 import Footer from '../components/shared/Footer';
 import Header from '../components/shared/Header';
 
@@ -6,7 +7,7 @@ function HabitPage(){
     return(
       <ScreenContainer>
             <Header />
-            <h3>Habits</h3>
+            <ScreenHabit />
             <Footer />
       </ScreenContainer>
     );
@@ -20,7 +21,6 @@ function HabitPage(){
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 0px;
   padding: 0px;
   `

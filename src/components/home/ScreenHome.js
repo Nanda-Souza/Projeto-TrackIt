@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import TodayHabits from "./TodayHabits";
+import TodayHabbits from "./TodayHabbits";
 
 export default function ScreenHome(){
     
@@ -7,7 +7,7 @@ export default function ScreenHome(){
         <HomeContainer>
           <h2>Segunda, 17/05</h2> 
           <p className="">Nenhum hábito concluído ainda</p> 
-          <TodayHabits />
+          <TodayHabbits />
 
         </HomeContainer>
     )

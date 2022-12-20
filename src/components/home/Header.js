@@ -41,7 +41,6 @@ const HeaderGeneral = styled.div`
         width: 55px;
         height: 55px;
         border-radius: 50%;
-        margin-right: 16px;
         margin-top: 7px;
     }
   `

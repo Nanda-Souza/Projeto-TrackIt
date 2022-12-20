@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import Footer from '../components/shared/Footer';
 import Header from '../components/shared/Header';
+import ScreenHistory from '../components/history/ScreenHistory';
 
 function HistoryPage() {
     return (
       <ScreenContainer>
             <Header />
-            <h3>History</h3>
+            <ScreenHistory />
             <Footer />
       </ScreenContainer>
     );
